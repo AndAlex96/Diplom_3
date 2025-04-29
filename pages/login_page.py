@@ -11,8 +11,7 @@ class LoginPage(BasePage):
 
     @allure.step('возвращение текущего url')
     def return_current_url(self):
-        time.sleep(1)
-        return self.get_current_url()
+        return self.get_current_url('https://stellarburgers.nomoreparties.site/login')
 
     @allure.step('заполнение поля email')
     def filling_in_the_email_field(self, text):
@@ -25,3 +24,7 @@ class LoginPage(BasePage):
     @allure.step('клик по кнопке войти')
     def click_on_login_button(self):
         self.click_on_element(locator=LoginPageLocators.button_login)
+
+    @allure.step('Ожидание смены адреса страницы')
+    def wait_current_url(self):
+        self.wait_url('https://stellarburgers.nomoreparties.site/login')

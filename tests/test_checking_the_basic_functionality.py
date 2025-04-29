@@ -20,7 +20,7 @@ class TestCheckingBasicFunctionality:
         start_page = StartPage(driver)
         start_page.click_on_button_orders_feed()
 
-        assert start_page.get_current_url_for_designer() == 'https://stellarburgers.nomoreparties.site/feed'
+        assert start_page.get_current_url_for_feed_order() == 'https://stellarburgers.nomoreparties.site/feed'
 
     @allure.title('если кликнуть на ингредиент, появится всплывающее окно с деталями')
     def test_after_clicking_on_an_ingredient_a_popup_window_with_details(self, driver):

@@ -12,11 +12,12 @@ class TestRecoveryPassword:
     def test_go_to_the_password_recovery_page(self, driver):
         start_page = StartPage(driver)
         login_page = LoginPage(driver)
+        recovery_password_page = RecoveryPasswordPage(driver)
 
         start_page.click_on_button_personal_account()
         login_page.click_on_button_recovery_password()
 
-        assert login_page.return_current_url() == 'https://stellarburgers.nomoreparties.site/forgot-password'
+        assert recovery_password_page.return_current_url() == 'https://stellarburgers.nomoreparties.site/forgot-password'
 
     @allure.title('ввод почты и клик по кнопке «Восстановить»')
     def test_send_email_and_click_button_recovery(self, driver):

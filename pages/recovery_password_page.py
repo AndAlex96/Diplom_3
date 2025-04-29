@@ -12,3 +12,6 @@ class RecoveryPasswordPage(BasePage):
     def click_on_button_recovery(self):
         self.click_on_element(locator=RecoveryPasswordPageLocators.button_recovery)
 
+    @allure.step('получение текущего url')
+    def return_current_url(self):
+        return self.get_current_url(web='https://stellarburgers.nomoreparties.site/forgot-password')

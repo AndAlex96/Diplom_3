@@ -28,10 +28,11 @@ class TestPersonalAccount:
         login_page.filling_in_the_email_field(text=email)
         login_page.filling_in_the_password_field(text=password)
         login_page.click_on_login_button()
+        start_page.wait_loading_url()
         start_page.click_on_button_personal_account()
         personal_user_prof.click_on_button_orders_history()
 
-        assert personal_user_prof.get_current_url_on_user_page() == 'https://stellarburgers.nomoreparties.site/account/order-history'
+        assert personal_user_prof.get_current_url_on_user_page_for_button_history() == 'https://stellarburgers.nomoreparties.site/account/order-history'
 
     @allure.title('выход из аккаунта')
     def test_exit_of_account(self, driver, created_user):
@@ -46,6 +47,7 @@ class TestPersonalAccount:
         login_page.filling_in_the_email_field(text=email)
         login_page.filling_in_the_password_field(text=password)
         login_page.click_on_login_button()
+        start_page.wait_loading_url()
         start_page.click_on_button_personal_account()
         personal_user_prof.click_on_button_exit()
 

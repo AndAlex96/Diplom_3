@@ -21,3 +21,5 @@ class StartPageLocators:
     souse_spicy_x = [By.XPATH, './/img[@alt="Соус Spicy-X"]']
     counter_souse_spicy_x = [By.XPATH, './/img[@alt="Соус Spicy-X"]/preceding-sibling::div[@class="counter_counter__ZNLkj counter_default__28sqi"]/p']
     bread_r2 = [By.XPATH, './/img[@alt="Флюоресцентная булка R2-D3"]']
+
+    modal_locator = [By.CLASS_NAME, "Modal_modal__loading__3534A"]

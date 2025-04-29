@@ -32,27 +32,31 @@ class StartPage(BasePage):
 
     @allure.step('нажатие на кнопку -крестик- закрытия окна ингридиента')
     def click_on_cross_button_on_window_ingredient(self):
-        time.sleep(1)
         self.click_on_element(locator=StartPageLocators.cross_on_window_ingredient)
 
     @allure.step('закрытие окна заказа')
     def click_on_cross_button_on_window_order(self):
-        time.sleep(10)
+        self.wait_for_modal_to_close(modal_locator=StartPageLocators.modal_locator)
         self.click_on_element(locator=StartPageLocators.cross_on_window_order)
 
     @allure.step('получение текущего url')
     def get_current_url_for_designer(self):
-        time.sleep(1)
-        return self.get_current_url()
+        return self.get_current_url('https://stellarburgers.nomoreparties.site/')
+
+    @allure.step('ожидание загрузки страницы')
+    def wait_loading_url(self):
+        return self.wait_url('https://stellarburgers.nomoreparties.site/')
+
+    @allure.step('получение текущего url')
+    def get_current_url_for_feed_order(self):
+        return self.get_current_url('https://stellarburgers.nomoreparties.site/feed')
 
     @allure.step('добавление случайного ингридиента в заказ')
     def get_ingredient_in_order(self):
-        time.sleep(1)
         self.move_element(locator_source=StartPageLocators.random_ingredient, locator_target=StartPageLocators.locator_target_for_order)
 
     @allure.step('добавление булки в заказ в заказ')
     def get_bread_in_order(self):
-        time.sleep(1)
         self.move_element(locator_source=StartPageLocators.bread_r2,
                           locator_target=StartPageLocators.locator_target_for_order)
 
@@ -72,7 +76,6 @@ class StartPage(BasePage):
 
     @allure.step('проверка наличия надписи оформления заказа')
     def checking_the_order_creation(self):
-        time.sleep(1)
         return self.find_element(locator=StartPageLocators.window_order_creation).text
 
     @allure.step('нажатие на главный логотип сайта')
@@ -81,5 +84,5 @@ class StartPage(BasePage):
 
     @allure.step('получение номера заказа в окне заказа')
     def get_number_order_in_window_about_order(self):
-        time.sleep(3)
+        self.wait_for_modal_to_close()
         return self.find_element(locator=StartPageLocators.number_order_in_window_about_order).text
